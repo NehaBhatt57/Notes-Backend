@@ -18,6 +18,11 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+// Simple request logger middleware
+app.get('/', (req, res) => {
+  res.send('Hello, welcome to the Multi-Tenant Notes API!');
+});
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
