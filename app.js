@@ -10,7 +10,17 @@ require('dotenv').config();
 
 
 const app = express();
-connectDB();
+(async () => {
+  try {
+    await connectDB();
+    // start listening or export app
+  } catch (error) {
+    console.error('Failed to connect to MongoDB:', error);
+    process.exit(1);
+  }
+})();
+
+// connectDB();
 
 app.use(cors({
   origin: '*',
